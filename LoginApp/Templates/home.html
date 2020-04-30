@@ -1,0 +1,13 @@
+{% load socialaccount %}
+{% if user.is_authenticated %}
+<h1>Welcome to the home page of my LoginAPP</h1>
+<p> Hi {{ user.username }} </p>
+<p> <a href="{% url 'account_logout' %}">logout</a></p>
+{% else %}
+
+<p> <a href="{% url 'account_signup' %}">Signup</a></p>
+<p> <a href="{% url 'account_login' %}">Login</a></p>
+<p> <a href="{% provider_login_url 'google' %}">Login with gmail</a></p>
+<p> <a href="{% provider_login_url 'facebook' method='oauth2' %}">Login with Facebook</a></p>
+{% endif %}
+
